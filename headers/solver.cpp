@@ -1,4 +1,4 @@
-#include "solver.h"
+#include "solver.hpp"
 
 // Constructor
 Solver::Solver(Cube& c){
