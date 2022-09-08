@@ -1,7 +1,7 @@
 #include <cstdlib>
 #include <cmath>
 #include <ctime>
-#include "random.h"
+#include "random.hpp"
 using namespace std;
 
 // Private function prototype.
