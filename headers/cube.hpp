@@ -6,7 +6,7 @@
 #include <string>
 #include <climits>
 #include <vector>
-#include "random.h"
+#include "random.hpp"
 
 const unsigned CUBE_SIZE = 2; // Cubo 2x2
 const unsigned NUM_FACES = 6; // Seis caras del cubo
