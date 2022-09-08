@@ -2,7 +2,7 @@
 #define _solver_hpp
 
 #include <cctype>
-#include "cube.h"
+#include "cube.hpp"
 
 class Solver{
 private:
