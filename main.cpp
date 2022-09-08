@@ -1,5 +1,5 @@
-#include "cube.h"
-#include "solver.h"
+#include "cube.hpp"
+#include "solver.hpp"
 
 int main(){
 	Cube c; // Se crea el cubo
