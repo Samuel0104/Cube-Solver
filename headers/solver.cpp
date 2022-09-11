@@ -20,6 +20,44 @@ void Solver::retractMove(){
 }
 
 
+/*  Se arma la totalidad del cubo haciendo una
+	busqueda recursiva.
+*/
+bool Solver::solve(unsigned depth = 14){
+//--------------------------------Casos base para el backtracking-------------------------------//
+	if (rubik->isSolved())
+		return true;	
+	if (depth == 0)
+		return false;
+//----------------------------------------------------------------------------------------------//
+
+	for (unsigned i = 0; i < NUM_MOVES; ++i){
+//-----Condiciones usadas para simplificar la cantidad de casos revisados en el backtracking----//
+		bool cond1 = solution.empty();
+		bool cond2 = !cond1 && toupper(MOVES[i]) != toupper(solution.back());
+		bool cond3 = !cond1 && isupper(MOVES[i]) && MOVES[i] == solution.back();
+		bool cond4 = solution.size() == 1 || (solution.size() == 1 && MOVES[i] != solution[solution.size()-2]);
+//----------------------------------------------------------------------------------------------//
+
+		if (cond1 || cond2 || (cond3 && cond4)){
+			makeMove(MOVES[i]);
+			if (solve(depth - 1)) // Se busca una solucion desde el estado actual
+				return true;
+			retractMove();
+		}
+	}
+	return false;
+}
+
+
+/*  Encapsula la funcion encargada de
+	la solucion de todo el cubo.
+*/
+void Solver::wholeCube(){
+	solve();
+}
+
+
 /*  Se juntan dos piezas de la parte inferior del cubo
 	haciendo una busqueda recursiva de los movimientos.
 */
