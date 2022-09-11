@@ -2,10 +2,10 @@
 #include "solver.hpp"
 
 int main(){
-	Cube c; // Se crea el cubo
+	Cube c; // The cube is created
 	std::cout << "Rubik++" << std::endl;
 	while (true){
-		// Menu principal del programa
+		// Program's main menu
 		char command = ' ';
 		while (toupper(command) != 'E' && toupper(command) != 'Q'){
 			std::cout << "\nIngrese un comando:\n"
@@ -16,7 +16,7 @@ int main(){
 		if (toupper(command) == 'Q')
 			break;
 		
-		// Seleccion del metodo de mezcla para desarmar el cubo
+		// Selection of the mixing method to scramble the cube
 		std::string choice = "";
 		while (choice != "1" && choice != "2"){
 			std::cout << "\nEscoja un metodo de mezcla:\n"
@@ -31,9 +31,9 @@ int main(){
 		else
 			scramble = c.scramble();
 			
-		std::cout << "\nMezcla: " << scramble << std::endl; // Se imprime la mezcla utilizada
+		std::cout << "\nMezcla: " << scramble << std::endl; // The used scramble is printed
 		
-		// Seleccion del metodo de solucion para armar el cubo
+		// Selection of the method to solve the cube
 		std::string method = "";
 		while (method != "1" && method != "2"){
 			std::cout << "\nEscoja un metodo de solucion:\n"
@@ -42,26 +42,26 @@ int main(){
 			std::cin >> method;
 		}
 		
-//-------------------------------------Solucionador del cubo------------------------------------//
-		Solver s(c); // Se construye el solucionador
+//------------------------------------------Cube Solver-----------------------------------------//
+		Solver s(c); // The solver is initialized
 		std::cout << "\nCubo desarmado:\n" << std::endl;
-		c.display(); // Se imprime el cubo desarmado
+		c.display(); // The scrambled cube is printed
 	
 		if (method == "1"){
-			s.firstLayer(); // Se arma la primera capa
+			s.firstLayer(); // The first layer is solved
 			std::cout << "\nPrimera capa:\n" << std::endl;
-			c.display(); // Se imprime el cubo con la capa inferior armada
+			c.display(); // The cube is printed with the first layer solved
 		
-			s.lastLayer(); // Se arma la segunda capa
+			s.lastLayer(); // The second layer is solved
 			std::cout << "\nSegunda capa (cubo armado):\n" << std::endl;
-			c.display(); // Se imprime el cubo armado
-			s.printSolution(); // Se muestran la lista y el numero de movimientos usados
+			c.display(); // The solved cube is printed
+			s.printSolution(); // The list and number of moves are displayed
 		}
 		else {
-			s.wholeCube();
+			s.wholeCube(); // The whole cube is solved
 			std::cout << "\nCubo armado:\n" << std::endl;
-			c.display(); // Se imprime el cubo armado
-			s.printSolution(); // Se muestran la lista y el numero de movimientos usados
+			c.display(); // The solved cube is printed
+			s.printSolution(); // The list and number of moves are displayed
 		}
 //----------------------------------------------------------------------------------------------//
 	}
