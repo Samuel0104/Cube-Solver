@@ -8,31 +8,31 @@
 #include <vector>
 #include "random.hpp"
 
-const unsigned CUBE_SIZE = 2; // Cubo 2x2
-const unsigned NUM_FACES = 6; // Seis caras del cubo
+const unsigned CUBE_SIZE = 2; // 2x2 cube
+const unsigned NUM_FACES = 6; // Cube's six faces
 
-/*  Movimientos o rotaciones definidas para el cubo:
-	U: Cara superior
-	u: Cara superior (sentido antihorario)
-	F: Cara frontal
-	f: Cara frontal (sentido antihorario)
-	R: Cara derecha
-	r: Cara derecha (sentido antihorario)
+/*  Moves or rotations defined for the cube:
+	U: Upper face
+	u: Upper face (counter-clock wise)
+	F: Front face
+	f: Front face (counter-clock wise)
+	R: Right face
+	r: Right face (counter-clock wise)
 */
 const unsigned NUM_MOVES = 6;
 const char MOVES[NUM_MOVES] = {'U', 'u', 'F', 'f', 'R', 'r'};
 
 class Cube{
 private:
-	char*** sides; // Arreglo con las partes del cubo.
-	char letters[NUM_FACES]; // Etiquetas para las piezas de cada una de las seis caras
-	std::string ID; // Representacion del estado actual del cubo (cada caracter es una pieza)
+	char*** sides; // Array with the parts of the cube
+	char letters[NUM_FACES]; // Labels for the pieces of each of the six faces
+	std::string ID; // Representation of the cube's current state (each character is a piece)
 
-	// Crea el ID siguiendo el orden de las etiquetas de letters
+	// Creates the ID following the order of the labels in 'letters'
 	void calcID();
 
-//----------------------Metodos encargados de hacer las rotaciones del cubo---------------------//
-	// Los metodos con la letra 'p' son giros en sentido antihorario
+//-----------------------------Methods for making the cube rotations----------------------------//
+	// Methods with the letter 'p' are counter-clock wise turns
 	void U();
 	void Up();
 	void F();
@@ -42,47 +42,47 @@ private:
 //----------------------------------------------------------------------------------------------//
 
 public:
-//-----------------------------------------Constructores----------------------------------------//
-	// Inicializa el cubo armado. letters se crea con la cadena "ULFRBD"
+//-----------------------------------------Constructors-----------------------------------------//
+	// Initializes the solved cube. 'letters' is created with the string "ULFRBD"
 	Cube();
 	
-	// Inicializa el cubo armado. letters se crea con la cadena faces
+	// Initializes the solved cube. 'letters' is creted with the string 'faces'
 	Cube(std::string faces);
 //----------------------------------------------------------------------------------------------//
 	
 	/*  Destructor:
-		Libera la memoria asociada al cubo.
+		Frees memory associated with the cube
 	*/
 	~Cube();
 
-//-------------------------Verificacion de la posicion correcta de piezas-----------------------//
-	// Se verifican todas las piezas para determinar que el cubo esta armado
+//-------------------------Verification of the correct position of pieces-----------------------//
+	// All pieces are checked to determine if the cube is solved
 	bool isSolved();
 	
-	// Solo se verifica la primera capa
+	// Only the first layer is checked
 	bool isFaceSolved();
 //----------------------------------------------------------------------------------------------//
 
-	// Retorna el ID
+	// Returns the ID
 	std::string getID();
 	
-	// Retorna la etiqueta en la posicion index del arreglo letters
+	// Returns label in position 'index' of the array 'letters'
 	char getLetter(unsigned index);
 	
-	// Imprime el estado actual del cubo
+	// Prints the cube's current state
 	void display();
 	
-	// Recibe un caracter y rota la cara del cubo asociada a ese caracter
+	// Takes a character and rotates the cube's face associated with that character
 	void rotate(char c);
 	
-	// Recibe una cadena de caracteres, los cuales se pasan a rotate(c)
+	// Takes a string. rotate(c) takes each character in the string
 	void move(std::string s);
 	
-//-------------------------Generadores de mezclas para desarmar el cubo-------------------------//
-	// Genera una mezcla aleatoria
+//------------------------------Mix generators to scramble the cube-----------------------------//
+	// Generates a random scramble
 	std::string scramble();
 	
-	// Lee un archivo de texto con mezclas
+	// Reads a text file with scrambles
 	std::string mix();
 //----------------------------------------------------------------------------------------------//
 };
