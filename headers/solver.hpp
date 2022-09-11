@@ -31,6 +31,14 @@ public:
 	*/
 	Solver(Cube& c);
 	
+//-----------------Metodos encargados de la solucion de la totalidad del cubo-------------------//
+	// Se arma todo el cubo con backtracking
+	bool solve(unsigned depth);
+	
+	// Encapsula la anterior
+	void wholeCube();
+//----------------------------------------------------------------------------------------------//
+	
 //---------------Metodos encargados de la solucion de la capa inferior del cubo-----------------//
 	// Se juntan dos piezas en su posicion correcta en la parte inferior del cubo
 	bool pair(unsigned depth);
