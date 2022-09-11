@@ -33,19 +33,36 @@ int main(){
 			
 		std::cout << "\nMezcla: " << scramble << std::endl; // Se imprime la mezcla utilizada
 		
+		// Seleccion del metodo de solucion para armar el cubo
+		std::string method = "";
+		while (method != "1" && method != "2"){
+			std::cout << "\nEscoja un metodo de solucion:\n"
+			<< "  1. Capa por capa\n"
+			<< "  2. Cubo completo\n";
+			std::cin >> method;
+		}
+		
 //-------------------------------------Solucionador del cubo------------------------------------//
 		Solver s(c); // Se construye el solucionador
 		std::cout << "\nCubo desarmado:\n" << std::endl;
 		c.display(); // Se imprime el cubo desarmado
 	
-		s.firstLayer(); // Se arma la primera capa
-		std::cout << "\nPrimera capa:\n" << std::endl;
-		c.display(); // Se imprime el cubo con la capa inferior armada
-	
-		s.lastLayer(); // Se arma la segunda capa
-		std::cout << "\nSegunda capa (cubo armado):\n" << std::endl;
-		c.display(); // Se imprime el cubo armado
-		s.printSolution(); // Se muestran la lista y el numero de movimientos usados
+		if (method == "1"){
+			s.firstLayer(); // Se arma la primera capa
+			std::cout << "\nPrimera capa:\n" << std::endl;
+			c.display(); // Se imprime el cubo con la capa inferior armada
+		
+			s.lastLayer(); // Se arma la segunda capa
+			std::cout << "\nSegunda capa (cubo armado):\n" << std::endl;
+			c.display(); // Se imprime el cubo armado
+			s.printSolution(); // Se muestran la lista y el numero de movimientos usados
+		}
+		else {
+			s.wholeCube();
+			std::cout << "\nCubo armado:\n" << std::endl;
+			c.display(); // Se imprime el cubo armado
+			s.printSolution(); // Se muestran la lista y el numero de movimientos usados
+		}
 //----------------------------------------------------------------------------------------------//
 	}
 	return 0;
