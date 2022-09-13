@@ -100,9 +100,9 @@ char Cube::getLetter(unsigned index){
 
 
 // Prints all the cube's faces as follows:
-//				arriba
-//	izquierda   frente   derecha   atras
-//				abajo
+//              up
+//      left   front   right   back
+//             down
 void Cube::display(){
 	// The upper face is printed
 	std::cout << "\t" << sides[0][0][0] << " " << sides[0][0][1] << "\n"
