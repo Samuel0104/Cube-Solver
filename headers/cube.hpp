@@ -46,7 +46,7 @@ public:
 	// Initializes the solved cube. 'letters' is created with the string "ULFRBD"
 	Cube();
 	
-	// Initializes the solved cube. 'letters' is creted with the string 'faces'
+	// Initializes the solved cube. 'letters' is created with the string 'faces'
 	Cube(std::string faces);
 //----------------------------------------------------------------------------------------------//
 	
