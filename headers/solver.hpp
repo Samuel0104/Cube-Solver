@@ -10,7 +10,7 @@ private:
 	std::vector<char> solution;
 	char faceRestrict; // Possible backtracking branches are restricted after solving a pair
 
-//---------------------Metodos encargados de hacer los movimientos del cubo---------------------//
+//-----------------------------Methods for making the cube movements----------------------------//
 	// Takes a character and rotates the cube's face associated with that character
 	void makeMove(char m);
 	
@@ -31,7 +31,7 @@ public:
 	*/
 	Solver(Cube& c);
 	
-//-----------------Metodos encargados de la solucion de la totalidad del cubo-------------------//
+//-------------------------Methods for solving the entirety of the cube-------------------------//
 	// The whole cube is solved with backtracking
 	bool solve(unsigned depth);
 	
@@ -39,7 +39,7 @@ public:
 	void wholeCube();
 //----------------------------------------------------------------------------------------------//
 	
-//---------------Metodos encargados de la solucion de la capa inferior del cubo-----------------//
+//-----------------------Methods for solving the bottom layer of the cube-----------------------//
 	// Two pieces are put together in their correct position at the bottom of the cube
 	bool pair(unsigned depth);
 	
@@ -50,7 +50,7 @@ public:
 	void firstLayer();
 //----------------------------------------------------------------------------------------------//
 
-//---------------Metodos encargados de la solucion de la capa superior del cubo-----------------//
+//-------------------------Methods for solving the top layer of the cube------------------------//
 	// Identifies the OLL case needed in the current state of the cube
 	std::string getOll();
 	
