@@ -8,9 +8,9 @@ int main(){
 		// Program's main menu
 		char command = ' ';
 		while (toupper(command) != 'E' && toupper(command) != 'Q'){
-			std::cout << "\nIngrese un comando:\n"
-			<< "E -- Ejecutar programa\n"
-			<< "Q -- Salir\n";
+			std::cout << "\nEnter a command:\n"
+			<< "E -- Execute program\n"
+			<< "Q -- Exit\n";
 			std::cin >> command;
 		}
 		if (toupper(command) == 'Q')
@@ -19,9 +19,9 @@ int main(){
 		// Selection of the mixing method to scramble the cube
 		std::string choice = "";
 		while (choice != "1" && choice != "2"){
-			std::cout << "\nEscoja un metodo de mezcla:\n"
-			<< "  1. Archivo de texto\n"
-			<< "  2. Mezcla aleatoria\n";
+			std::cout << "\nChoose a mixing method:\n"
+			<< "  1. Text file\n"
+			<< "  2. Random scramble\n";
 			std::cin >> choice;
 		}
 		
@@ -31,14 +31,14 @@ int main(){
 		else
 			scramble = c.scramble();
 			
-		std::cout << "\nMezcla: " << scramble << std::endl; // The used scramble is printed
+		std::cout << "\nScramble: " << scramble << std::endl; // The used scramble is printed
 		
 		// Selection of the method to solve the cube
 		std::string method = "";
 		while (method != "1" && method != "2"){
-			std::cout << "\nEscoja un metodo de solucion:\n"
-			<< "  1. Capa por capa\n"
-			<< "  2. Cubo completo\n";
+			std::cout << "\nChoose a solving method:\n"
+			<< "  1. Layer by layer\n"
+			<< "  2. Whole cube\n";
 			std::cin >> method;
 		}
 		
