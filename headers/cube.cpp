@@ -87,42 +87,41 @@ void Cube::calcID(){
 }
 
 
-//------------------------Metodos encargados de retornar valores privados-----------------------//
+//-----------------------------Methods for returning private values-----------------------------//
 std::string Cube::getID(){
 	return ID;
 }
 char Cube::getLetter(unsigned index){
-	if (index > 5) // Muestra error si el indice es mayor al rango de letters
+	if (index > 5) // Throws an error if the index is greater than the range of 'letters'
 		throw std::runtime_error("getLetter(): Index out of range");
 	return letters[index];
 }
 //----------------------------------------------------------------------------------------------//
 
 
-/*  Imprime todas las caras del cubo de la siguiente forma:
-	.				arriba
-	.	izquierda   frente   derecha   atras
-	.               abajo
-*/
+// Prints all the cube's faces as follows:
+//				arriba
+//	izquierda   frente   derecha   atras
+//				abajo
 void Cube::display(){
-	// Se imprime la cara superior
+	// The upper face is printed
 	std::cout << "\t" << sides[0][0][0] << " " << sides[0][0][1] << "\n"
 			  << "\t" << sides[0][1][0] << " " << sides[0][1][1] << "\n\n";
 	
-	// Se imprimen las caras laterales
+	// Side faces are printed
 	for (unsigned i = 0; i < 2; ++i){
 		for (unsigned n = 1; n < 5; ++n)
 			std::cout << "  " << sides[n][i][0] << " " << sides[n][i][1] << " ";
 		std::cout << "\n";
 	}
 	
-	// Se imprime la cara inferior
+	// The lower face is printed
 	std::cout << "\n\t" << sides[5][0][0] << " " << sides[5][0][1] << "\n"
 			  << "\t" << sides[5][1][0] << " " << sides[5][1][1] << "\n\n";
 }
 
 
-//----------------------Metodos encargados de hacer las rotaciones del cubo---------------------//
+//-----------------------------Methods for making the cube rotations----------------------------//
 void Cube::U(){
 	char**&u = sides[0], **&l = sides[1],
 	**&f = sides[2], **&r = sides[3],
