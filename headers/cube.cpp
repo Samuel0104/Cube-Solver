@@ -1,6 +1,6 @@
 #include "cube.hpp"
 
-// Constructor por defecto
+// Default constructor
 Cube::Cube(){
 	std::string faces = "ULFRBD";
 	for (unsigned i = 0; i < NUM_FACES; ++i)
@@ -50,9 +50,8 @@ Cube::~Cube(){
 }
 
 
-/*  Verifica que las piezas de cada cara sean iguales
-	y que esten en el mismo orden del arreglo letters.
-*/
+// Verifies that the pieces of each face are equal
+// and are in the same order as the array 'letters'
 bool Cube::isSolved(){
 	for (unsigned i = 0; i < 6; ++i)
 		for (unsigned j = 0; j < 4; ++j)
@@ -62,10 +61,9 @@ bool Cube::isSolved(){
 }
 
 
-/*  Verifica que las piezas de la cara inferior
-	sean iguales y que los pares de piezas
-	adyacentes a ella tambien estenarmados.
-*/
+// Verifies that the pieces of the lower face
+// are equal and the pairs of pieces adjacent
+// to it are solved too
 bool Cube::isFaceSolved(){
 	for (unsigned i = 20; i < 24; ++i)
 		if (ID[i] != letters[5])
@@ -77,15 +75,15 @@ bool Cube::isFaceSolved(){
 }
 
 
-/*  Crea el ID siguiendo el orden de las etiquetas
-	de letters asignadas a cada pieza del cubo.
-*/
+// Creates the ID following the order of the
+// labels in 'letters' asigned to each piece
+// of the cube
 void Cube::calcID(){
     ID = "";
     for (unsigned n = 0; n < NUM_FACES; ++n)
         for (unsigned i = 0; i < CUBE_SIZE; ++i)
             for (unsigned j = 0; j < CUBE_SIZE; ++j)
-                ID += sides[n][i][j]; // Concatena la etiqueta de cada pieza del cubo, indicando su cara, fila y columna
+                ID += sides[n][i][j]; // Concatenates the label of each piece of the cube, indicating its face, row and column
 }
 
 
