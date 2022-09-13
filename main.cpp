@@ -10,7 +10,7 @@ int main(){
 		while (toupper(command) != 'E' && toupper(command) != 'Q'){
 			std::cout << "\nEnter a command:\n"
 			<< "E -- Execute program\n"
-			<< "Q -- Exit\n";
+			<< "Q -- Quit\n";
 			std::cin >> command;
 		}
 		if (toupper(command) == 'Q')
@@ -44,25 +44,24 @@ int main(){
 		
 //------------------------------------------Cube Solver-----------------------------------------//
 		Solver s(c); // The solver is initialized
-		std::cout << "\nCubo desarmado:\n" << std::endl;
+		std::cout << "\nScrambled cube:\n" << std::endl;
 		c.display(); // The scrambled cube is printed
 	
 		if (method == "1"){
 			s.firstLayer(); // The first layer is solved
-			std::cout << "\nPrimera capa:\n" << std::endl;
+			std::cout << "\nFirst layer:\n" << std::endl;
 			c.display(); // The cube is printed with the first layer solved
 		
 			s.lastLayer(); // The second layer is solved
-			std::cout << "\nSegunda capa (cubo armado):\n" << std::endl;
-			c.display(); // The solved cube is printed
-			s.printSolution(); // The list and number of moves are displayed
+			std::cout << "\nSecond layer (solved cube):\n" << std::endl;
 		}
 		else {
 			s.wholeCube(); // The whole cube is solved
-			std::cout << "\nCubo armado:\n" << std::endl;
-			c.display(); // The solved cube is printed
-			s.printSolution(); // The list and number of moves are displayed
+			std::cout << "\nSolved cube:\n" << std::endl;
 		}
+		
+		c.display(); // The solved cube is printed
+		s.printSolution(); // The list and number of moves are displayed
 //----------------------------------------------------------------------------------------------//
 	}
 	return 0;
