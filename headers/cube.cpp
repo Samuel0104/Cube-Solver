@@ -288,24 +288,22 @@ void Cube::rotate(char c){
 }
 
 
-/*  Recibe una cadena de caracteres. Cada
-	caracter se pasa al metodo rotate(c).
-*/
+// Takes a string. The method rotate(c)
+// takes each character
 void Cube::move(std::string s){
 	for (unsigned i = 0; i < s.length(); i += 2)
 		rotate(s[i]);
 }
 
 
-/*  Genera una mezcla aleatoria de veinte
-	movimientos y desarma el cubo con ella.
-	Retorna la cadena con la mezcla.
-*/
+// Generates a random scramble of twenty moves
+// and shuffles the cube using it. Returns the
+// string with the scramble
 std::string Cube::scramble(){
     std::string text = "";
     int length = randomInteger(20, 20);
     for (int i = 0; i < length; ++i){
-    	text += MOVES[randomInteger(0, 5)]; // Caracter aleatorio del arreglo MOVES
+    	text += MOVES[randomInteger(0, 5)]; // Random character of the array 'MOVES'
     	text += ' ';
 	}
     move(text);
@@ -313,18 +311,17 @@ std::string Cube::scramble(){
 }
 
 
-/*  Lee un archivo de texto con mezclas y
-	permite escoger una para desarmar el cubo.
-	Retorna la cadena con la mezcla seleccionada.
-*/
+// Reads a text file with scrambles and lets the
+// user choose one for shuffling the cube. Returns
+// the string with the selected scramble
 std::string Cube::mix(){
 	std::vector<std::string> scrambles;
 	std::ifstream infile;
 	std::cin.ignore(INT_MAX, '\n');
 	
-	// Lee el nombre del archivo a utilizar
+	// Reads the name of the file to use
 	while (true){
-		std::cout << "\nNombre del archivo: ";
+		std::cout << "\nFile name: ";
 		std::string file = "";
 		std::getline(std::cin, file);
 		infile.open(file);
@@ -333,7 +330,7 @@ std::string Cube::mix(){
 		infile.clear();
 	}
 	
-	// Guarda las mezclas en un vector
+	// Stores the scrambles in a vector
 	while (true){
 		std::string line;
 		std::getline(infile, line);
@@ -343,11 +340,11 @@ std::string Cube::mix(){
 	}
 	infile.close();
 	
-	// Imprime las mezclas disponibles
+	// Prints the available scrambles
 	std::string choice = "0";
 	std::string text = "";
 	while (std::stoi(choice) == 0 || std::stoi(choice) > scrambles.size()){
-		std::cout << "\nMezclas disponibles:\n";
+		std::cout << "\nAvailable scrambles:\n";
 		for (unsigned i = 0; i < scrambles.size(); ++i)
 			std::cout << "  " << i+1 << ". " << scrambles[i] << std::endl;
 		std::getline(std::cin, choice);
