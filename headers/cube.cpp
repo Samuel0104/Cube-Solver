@@ -257,11 +257,10 @@ void Cube::Rp(){
 //----------------------------------------------------------------------------------------------//
 
 
-/*  Recibe un caracter para realizar un movimiento. Si el
-	caracter esta en el arreglo MOVES, se identifica el caso
-	y se traduce en uno de los metodos para hacer rotaciones.
-	Retorna un error si el caracter no esta en MOVES.
-*/
+// Takes a character to make a move. If the character is in
+// the array 'MOVES', identifies the case and translates it
+// into a rotation method. Returns an error if the character
+// is not in 'MOVES'
 void Cube::rotate(char c){
 	switch (c){
 		case 'U':
@@ -282,10 +281,10 @@ void Cube::rotate(char c){
 		case 'r':
 			Rp();
 			break;
-		default: // Evitar errores cuando el caracter que se esta ingresando no sea ningun caso
+		default: // Avoid errors when the entered character is not any defined case
 			throw std::runtime_error("rotate(): Invalid character");
 	}
-	calcID(); // Se actualiza el ID
+	calcID(); // The ID is updated
 }
 
 
