@@ -218,10 +218,10 @@ void Solver::lastLayer(){
 	movimientos utilizados.
 */
 void Solver::printSolution(){
-	std::cout << "\nSolucion: ";
+	std::cout << "\nSolution: ";
 	unsigned num = solution.size();
 	for (unsigned i = 0; i < num; ++i)
 		std::cout << solution[i] << " ";
-	std::cout << "\nCantidad de movimientos realizados: " << num
+	std::cout << "\nNumber of movements made: " << num
 	<< "\n\n************************\n";
 }
