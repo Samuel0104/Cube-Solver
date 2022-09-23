@@ -9,20 +9,19 @@ Solver::Solver(Cube& c){
 
 void Solver::makeMove(char m){
 	rubik->rotate(m);
-	solution.push_back(m); // Se agrega el ultimo movimiento a la solucion
+	solution.push_back(m); // The last move is added to the solution
 }
 
 
 void Solver::retractMove(){
 	char m = solution.back();
 	rubik->rotate(isupper(m) ? tolower(m):toupper(m));
-	solution.pop_back(); // Se elimina el ultimo movimiento de la solucion
+	solution.pop_back(); // The last move is removed from the solution
 }
 
 
-/*  Se arma la totalidad del cubo haciendo una
-	busqueda recursiva.
-*/
+// The whole cube is solved using
+// a recursive search
 bool Solver::solve(unsigned depth = 14){
 //--------------------------------Casos base para el backtracking-------------------------------//
 	if (rubik->isSolved())
@@ -41,7 +40,7 @@ bool Solver::solve(unsigned depth = 14){
 
 		if (cond1 || cond2 || (cond3 && cond4)){
 			makeMove(MOVES[i]);
-			if (solve(depth - 1)) // Se busca una solucion desde el estado actual
+			if (solve(depth - 1)) // A solution is sought from the current state
 				return true;
 			retractMove();
 		}
@@ -50,9 +49,8 @@ bool Solver::solve(unsigned depth = 14){
 }
 
 
-/*  Encapsula la funcion encargada de
-	la solucion de todo el cubo.
-*/
+// Encapsulates the method for solving
+// the entirety of the cube
 void Solver::wholeCube(){
 	solve();
 }
@@ -85,7 +83,7 @@ bool Solver::pair(unsigned depth = 4){
 
 		if (cond1 || cond2 || (cond3 && cond4)){
 			makeMove(MOVES[i]);
-			if (pair(depth - 1)) // Se busca una solucion desde el estado actual
+			if (pair(depth - 1)) // A solution is sought from the current state
 				return true;
 			retractMove();
 		}
